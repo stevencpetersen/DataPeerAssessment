@@ -4,7 +4,7 @@ There is one script for this project. It is called run_analysis.R.
 
 It requires the working directory to be the \getdata_projectfiles_UCI HAR Dataset\UCI HAR Dataset directory with the \test and \train subdirectories present.
 
-The folllwong files are expected to be in the working directory:
+The following files are expected to be in the working directory:
 
 activity_labels.txt
 features.txt
