@@ -5,7 +5,7 @@ run_analysis<-function() {
       # Created April 2014
       #
       
-      # Must be in the "\getdata_projectfiles_UCI HAR Dataset\UCI HAR Dataset\" directory.
+      # Working directory must be "\getdata_projectfiles_UCI HAR Dataset\UCI HAR Dataset\" directory.
 
       # Read in the headers
       h<-readLines("features.txt")
@@ -29,7 +29,7 @@ run_analysis<-function() {
       for(i in 1:length(hi_headers)) {
             ch_i<-ch_i+1
             h_index[hi_headers[i]]=16
-            col_head[ch_i]<-h[hi_headers[i]] #unlist(strsplit(h[hi_headers[i]]," f| t"))[2]
+            col_head[ch_i]<-h[hi_headers[i]] 
       }
 
       # Get the activity labels.
