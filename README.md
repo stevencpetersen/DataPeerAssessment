@@ -6,8 +6,8 @@ It requires the working directory to be the \getdata_projectfiles_UCI HAR Datase
 
 The following files are expected to be in the working directory:
 
-activity_labels.txt
-features.txt
+* activity_labels.txt
+* features.txt
 
 The following files are expected to be in the /test subdirectory below the working directory:
 
