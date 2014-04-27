@@ -7,6 +7,9 @@ run_analysis<-function() {
       
       # Working directory must be "\getdata_projectfiles_UCI HAR Dataset\UCI HAR Dataset\" directory.
 
+      # Load reshape2
+      library(reshape2)
+      
       # Read in the headers
       h<-readLines("features.txt")
       
@@ -29,7 +32,13 @@ run_analysis<-function() {
       for(i in 1:length(hi_headers)) {
             ch_i<-ch_i+1
             h_index[hi_headers[i]]=16
-            col_head[ch_i]<-h[hi_headers[i]] 
+#            col_head[ch_i]<-h[hi_headers[i]] 
+            tmp<-unlist(strsplit(h[hi_headers[i]],"[()]"))
+            if(is.na(tmp[3])) {
+                  col_head[ch_i]<-(tmp[1])
+            } else {
+                  col_head[ch_i]<-paste(tmp[1],tmp[3],sep="")
+            }
       }
 
       # Get the activity labels.
@@ -78,7 +87,7 @@ run_analysis<-function() {
       colnames(comboMeasurements)<-col_head
       
       # Melt comboMeasurements into 3 columns - Subject, Avtivity, Measurement
-      molten<-melt(t, id=c("Subject", "Activity"))
+      molten<-melt(comboMeasurements, id=c("Subject", "Activity"))
       
       # Dcast to create single line per Subject/ Activity with the mean of each measurement
       dmolten<-dcast(molten, Subject + Activity ~ variable, mean)
