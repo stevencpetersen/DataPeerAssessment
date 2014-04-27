@@ -25,6 +25,8 @@ This process produces two data sets:
 
 comboMeasurements is the merged test and train data with 10,299 data records with the subject, activity, and 79 readings per record. This is the raw data that was then molded into the tinyMeasurements dataset with 180 records, one for each subject/ activity combination with 79 column mean entries.
 
+See the comments in run_analysis.R for the documented step-by-step processing description.
+
 ## Appendix A
 
 ==================================================================
@@ -181,4 +183,6 @@ Jorge L. Reyes-Ortiz, Alessandro Ghio, Luca Oneto, Davide Anguita. November 2012
 * 542 fBodyBodyGyroJerkMag-mean()
 * 543 fBodyBodyGyroJerkMag-std()
 * 552 fBodyBodyGyroJerkMag-meanFreq()
+
+
 
