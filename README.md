@@ -30,5 +30,5 @@ The function outputs two csv files in the working directory:
 * comboMeasurements.csv
 * tidyMeasurements.csv
 
-The contents of these files is described in the accompanying run_analysis.R code book, CodeBook.md.
+The contents of these files are described in the accompanying run_analysis.R code book, CodeBook.md.
 
