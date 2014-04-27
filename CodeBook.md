@@ -1,30 +1,29 @@
-
 ## CodeBook for run_analysis.R
 
 run_analysis.R() if a function to extract and summarize data from the output measurements associated with the Human Activity Recognition Using Smartphones Data found at this URL: 
 
 http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
 
-Appendix A describes the original data that was the begining point for the run_analysis resulting output.
+Appendix A describes the original data that was the beginning point for the run_analysis resulting output.
 
-The goal of this project was to produce a dataset that summarized a subset of the 561 features, by experiment subject and subject activitye, to associate those selected 79 features with the appropriate subject id feature and associated activity performed, and to provide a summary file giving the mean of the 79 numeric values for each subject/ activity combination. The resulting output consists of 180 summary records. 
+The goal of this project was to produce a dataset that summarized a subset of the 561 features, by experiment subject and subject activity, to associate those selected 79 features with the appropriate subject id feature and associated activity performed, and to provide a summary file giving the mean of the 79 numeric values for each subject/ activity combination. The resulting output consists of 180 summary records. 
 
-The original data contained 10,299 records with 561 features related to the subject's movements while conduting various activities. These 10,299 records were split by the original team into training and testing datasets, with test set containing 2,947 records and the train set containing the remaining 7,352 records. 
+The original data contained 10,299 records with 561 features related to the subject's movements while conducting various activities. These 10,299 records were split by the original team into training and testing datasets, with test set containing 2,947 records and the train set containing the remaining 7,352 records. 
 
-Of the 561 features, 79 were extracted by filtering the feature column headings. The 79 columns selected contain either of the literals "mean" or "std". The filtered column names were used to create an index that was used to extract the columns from the test and train datasets mentioned above. The columns that were extracted and incorporated into the final file are shown in Appendix B. The original list of 561 variables can be found in features.txt in the "\getdata_projectfiles_UCI HAR Dataset\UCI HAR Dataset\" data directory. These are not included here due to the size of this list.
+Of the 561 features, 79 were extracted by filtering the feature column headings. The 79 columns selected contain either of the literals "mean" or "std". The filtered column names were used to create an index that was used to extract the columns from the test and train datasets mentioned above. The columns that were extracted and incorporated into the final file are shown in Appendix B. The original list of 561 variables can be found in features.txt in the "\getdata_projectfiles_UCI HAR Dataset\UCI HAR Dataset\" data directory. These are not included here due to the size of this list. The number preceding each column in Appendix B are the actual column number from the original datasets.
 
-Associated subject and activity ids were provided in separate files and were added to the data frames which were created for test and train. Activities were initially represented by a numeric id which was associated with a text descriptive name. In the intermediate steps the activity ids were replaced with their equivalent human readable description. The source id had no cooresponding descriptive value and so remained coded as a numeric identifier. 
+Associated subject and activity ids were provided in separate files and were added to the data frames which were created for test and train. Activities were initially represented by a numeric id which was associated with a text descriptive name. In the intermediate steps the activity ids were replaced with their equivalent human readable description. The source id had no corresponding descriptive value and so remained coded as a numeric identifier. 
 
-Once the test and train data frames were built the were bound together into a single data frame consisting of the 10,299 records and column headings were added. The column names remain unchanged from the original due to the fact that they are somewhat descriptive of the underlyig data and need to remain unique to eventually get to the data required. In the preprocessing, attempts to make the column headings less "cryptic" revealed that there were duplicate names. One attempt to strip off the leading numeric column identity resulted in duplicate column names and further processing was flawed. The column names in the resulting data set must be interpreted to be "the mean of" the column name. Further work in this regard would require a deep understanding of the underlying data that goes beyond the goal of this project.
+Once the test and train data frames were built they were bound together into a single data frame consisting of the 10,299 records and column headings were added. The column names remain unchanged from the original data due to the fact that they are somewhat descriptive of the underlying data and need to remain unique to eventually get to the output required. In the preprocessing, attempts to make the column headings less "cryptic" revealed that there were duplicate names. One attempt to strip off the leading numeric column identity resulted in duplicate column names and further processing was flawed. The column names in the resulting data set must be interpreted to be "the mean of" the column name. Further work in this regard would require a deeper understanding of the underlying data that goes beyond the goal of this project.
 
-One a single data frame was created, it was 'melted' using the reshape2 library funtion and an intermediate file was created the had one row per subject/ activity/ measurement giving 818,621 records. from the reshape2, 'dcast' was used to summarize these records into 180 records consiting of 79 means for each subject/ activity combination. The means were column means for each subject/ activity combination.
+One single data frame was created, it was 'melted' using the reshape2 library ‘melt’ function and an intermediate file was created that had one row per subject/ activity/ measurement giving 818,621 records. From here,  reshape2, 'dcast' was used to summarize these records into 180 records consisting of 79 means for each subject/ activity combination. The means are column means for each subject/ activity combination.
 
-This process produces two data set:
+This process produces two data sets:
 
 * comboMeasurements.csv
 * tidyMeasurements.csv
 
-comboMeasurements is the merged test and train data with 10,299 data records with the subject, activity, and 79 readings per record. This is the raw data that was then molded into the tinyMeasurements dataset with 180 records, on for each subject/ activity combination with 79 column mean entries.
+comboMeasurements is the merged test and train data with 10,299 data records with the subject, activity, and 79 readings per record. This is the raw data that was then molded into the tinyMeasurements dataset with 180 records, one for each subject/ activity combination with 79 column mean entries.
 
 ## Appendix A
 
