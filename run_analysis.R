@@ -32,7 +32,6 @@ run_analysis<-function() {
       for(i in 1:length(hi_headers)) {
             ch_i<-ch_i+1
             h_index[hi_headers[i]]=16
-#            col_head[ch_i]<-h[hi_headers[i]] 
             tmp<-unlist(strsplit(h[hi_headers[i]],"[()]"))
             if(is.na(tmp[3])) {
                   col_head[ch_i]<-(tmp[1])
